@@ -55,7 +55,7 @@ class NotesViewController: UITableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "ShowNote"){
+        if(segue.identifier == "ShowExistingNote"){
         let noteDisplay = segue.destinationViewController  as! NoteDisplayViewController
         noteDisplay.note = SelectedNote
         }
@@ -97,10 +97,10 @@ class NotesViewController: UITableViewController {
 }
 extension NotesViewController //เพิ่มความยืดหยุ่นในการใช้งานของคลาสที่มีอยู่
 {
-    //mark: Delegate
+        //mark: Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        self.performSegueWithIdentifier("ShowExistingNote", sender: self)
+        SelectedNote = notes[indexPath.row]
+        self.performSegueWithIdentifier("ShowNote", sender: self)
     }
     
     
